@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-probes-deployment
+  namespace: test
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx-probes
+  template:
+    metadata:
+      labels:
+        app: nginx-probes
+    spec:
+      containers:
+        - name: nginx
+          image: "nginx:1.14.2"
+          ports:
+            - name: liveness-port
+              containerPort: 80
+          livenessProbe:
+            httpGet:
+              path: /
+              port: liveness-port
+            initialDelaySeconds: 3
+            periodSeconds: 3
+          startupProbe:
+            httpGet:
+              path: /
+              port: liveness-port
+            failureThreshold: 30
+            periodSeconds: 10

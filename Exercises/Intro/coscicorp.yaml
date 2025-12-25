@@ -1,0 +1,11 @@
+# kubectl apply -f https://k8s.io/examples/pods/simple-pod.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: coscicorp
+spec:
+  containers:
+    - name: cosci
+      image: "coscicorp/website:latest"
+      ports:
+        - containerPort: 8080
