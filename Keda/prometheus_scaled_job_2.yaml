@@ -1,0 +1,61 @@
+# apiVersion: keda.sh/v1alpha1
+# kind: ScaledJob
+# metadata:
+#   name: nginx-replicas-count-changed
+#   namespace: keda-test
+# spec:
+#   pollingInterval: 10
+#   successfulJobsHistoryLimit: 1
+#   failedJobsHistoryLimit: 1
+#   maxReplicaCount: 1
+
+#   jobTargetRef:
+#     template:
+#       spec:
+#         containers:
+#           - name: alert
+#             image: busybox
+#             command: ["sh", "-c", "echo 'Replica count changed!'"]
+#         restartPolicy: Never
+
+#   triggers:
+#     - type: prometheus
+#       metadata:
+#         serverAddress: http://prometheus-server.default.svc.cluster.local:80
+#         query: abs(delta(kube_deployment_status_replicas{deployment="nginx-probes-deployment", namespace="keda-test"}[5m]))
+#         threshold: "0.5"
+#         activationThreshold: "0.1"
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledJob
+metadata:
+  name: nginx-replicas-count-changed
+  namespace: keda-test
+spec:
+  pollingInterval: 10
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  maxReplicaCount: 1
+
+  jobTargetRef:
+    template:
+      spec:
+        containers:
+          - name: alert
+            image: busybox
+            command: ["sh", "-c", "echo 'Replica count changed!'"]
+        restartPolicy: Never
+
+  triggers:
+    - type: prometheus
+      metadata:
+        serverAddress: http://prometheus-server.default.svc.cluster.local:80
+        query: |
+          changes(
+            kube_deployment_status_replicas{
+              deployment="nginx-probes-deployment",
+              namespace="keda-test"
+            }[2m]
+          )
+        threshold: "1"
+        activationThreshold: "1"

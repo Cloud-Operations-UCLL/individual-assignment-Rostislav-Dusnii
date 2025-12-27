@@ -1,0 +1,15 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: cosci-scaler
+  namespace: keda-test
+spec:
+  scaleTargetRef:
+    name: cosci-dep
+  minReplicaCount: 0
+  maxReplicaCount: 10
+  triggers:
+    - type: kubernetes-workload
+      metadata:
+        podSelector: "app=nginx-probes"
+        value: "0.5"

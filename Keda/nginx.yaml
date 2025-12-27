@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-probes-deployment
+  namespace: keda-test
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: nginx-probes
+  template:
+    metadata:
+      labels:
+        app: nginx-probes
+    spec:
+      containers:
+        - name: nginx
+          image: "nginx:1.14.2"
+          ports:
+            - name: liveness-port
+              containerPort: 80

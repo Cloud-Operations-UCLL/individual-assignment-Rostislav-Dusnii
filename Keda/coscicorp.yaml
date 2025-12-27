@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cosci-dep
+  namespace: keda-test
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: cosci
+  template:
+    metadata:
+      labels:
+        app: cosci
+    spec:
+      containers:
+        - name: cosci-container
+          image: "coscicorp/website:latest"
+          ports:
+            - containerPort: 8080
