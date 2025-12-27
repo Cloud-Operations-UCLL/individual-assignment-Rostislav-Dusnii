@@ -1,0 +1,57 @@
+user@kube ~ [1]> kubectl describe hpa  -n keda-test
+
+Name:                                              keda-hpa-cosci-scaler
+Namespace:                                         keda-test
+Labels:                                            app.kubernetes.io/managed-by=keda-operator
+                                                   app.kubernetes.io/name=keda-hpa-cosci-scaler
+                                                   app.kubernetes.io/part-of=cosci-scaler
+                                                   app.kubernetes.io/version=2.18.3
+                                                   scaledobject.keda.sh/name=cosci-scaler
+Annotations:                                       <none>
+CreationTimestamp:                                 Thu, 25 Dec 2025 21:13:23 +0000
+Reference:                                         Deployment/cosci-dep
+Metrics:                                           ( current / target )
+  "s0-workload-keda-test" (target average value):  250m / 500m
+Min replicas:                                      1
+Max replicas:                                      10
+Deployment pods:                                   4 current / 4 desired
+Conditions:
+  Type            Status  Reason               Message
+  ----            ------  ------               -------
+  AbleToScale     True    ScaleDownStabilized  recent recommendations were higher than current one, applying the highest recent recommendation
+  ScalingActive   True    ValidMetricFound     the HPA was able to successfully calculate a replica count from external metric s0-workload-keda-test(&LabelSelector{MatchLabels:map[string]string{scaledobject.keda.sh/name: cosci-scaler,},MatchExpressions:[]LabelSelectorRequirement{},})
+  ScalingLimited  False   DesiredWithinRange   the desired count is within the acceptable range
+Events:
+  Type    Reason             Age                  From                       Message
+  ----    ------             ----                 ----                       -------
+  Normal  SuccessfulRescale  27m (x2 over 38m)    horizontal-pod-autoscaler  New size: 2; reason: external metric s0-workload-keda-test(&LabelSelector{MatchLabels:map[string]string{scaledobject.keda.sh/name: cosci-scaler,},MatchExpressions:[]LabelSelectorRequirement{},}) above target
+  Normal  SuccessfulRescale  5m36s (x2 over 43m)  horizontal-pod-autoscaler  New size: 4; reason: external metric s0-workload-keda-test(&LabelSelector{MatchLabels:map[string]string{scaledobject.keda.sh/name: cosci-scaler,},MatchExpressions:[]LabelSelectorRequirement{},}) above target
+user@kube ~> kubectl describe hpa  -n keda-test
+
+Name:                                              keda-hpa-cosci-scaler
+Namespace:                                         keda-test
+Labels:                                            app.kubernetes.io/managed-by=keda-operator
+                                                   app.kubernetes.io/name=keda-hpa-cosci-scaler
+                                                   app.kubernetes.io/part-of=cosci-scaler
+                                                   app.kubernetes.io/version=2.18.3
+                                                   scaledobject.keda.sh/name=cosci-scaler
+Annotations:                                       <none>
+CreationTimestamp:                                 Thu, 25 Dec 2025 21:13:23 +0000
+Reference:                                         Deployment/cosci-dep
+Metrics:                                           ( current / target )
+  "s0-workload-keda-test" (target average value):  500m / 500m
+Min replicas:                                      1
+Max replicas:                                      10
+Deployment pods:                                   2 current / 2 desired
+Conditions:
+  Type            Status  Reason              Message
+  ----            ------  ------              -------
+  AbleToScale     True    ReadyForNewScale    recommended size matches current size
+  ScalingActive   True    ValidMetricFound    the HPA was able to successfully calculate a replica count from external metric s0-workload-keda-test(&LabelSelector{MatchLabels:map[string]string{scaledobject.keda.sh/name: cosci-scaler,},MatchExpressions:[]LabelSelectorRequirement{},})
+  ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
+Events:
+  Type    Reason             Age                  From                       Message
+  ----    ------             ----                 ----                       -------
+  Normal  SuccessfulRescale  30m (x2 over 40m)    horizontal-pod-autoscaler  New size: 2; reason: external metric s0-workload-keda-test(&LabelSelector{MatchLabels:map[string]string{scaledobject.keda.sh/name: cosci-scaler,},MatchExpressions:[]LabelSelectorRequirement{},}) above target
+  Normal  SuccessfulRescale  7m43s (x2 over 46m)  horizontal-pod-autoscaler  New size: 4; reason: external metric s0-workload-keda-test(&LabelSelector{MatchLabels:map[string]string{scaledobject.keda.sh/name: cosci-scaler,},MatchExpressions:[]LabelSelectorRequirement{},}) above target
+  Normal  SuccessfulRescale  40s                  horizontal-pod-autoscaler  New size: 2; reason: All metrics below target
