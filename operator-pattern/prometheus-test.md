@@ -1,17 +1,4 @@
-Absolutely — here are **clean, minimal, reliable snippets** you can use to *demonstrate the Prometheus Operator working* to your lecturer.  
-Each snippet shows a **CRD → Operator → Reconciliation → Result** flow, which is exactly what the Operator Pattern is about.
-
-I’ll give you three progressively stronger demos:
-
-1. **ServiceMonitor** (the classic “hello world” of Prometheus Operator)  
-2. **PrometheusRule** (Operator validates & loads alerting rules)  
-3. **Prometheus CR scaling** (Operator reconciles StatefulSet changes)
-
-These work even on small clusters.
-
----
-
-# ⭐ Demo 1 — Create a ServiceMonitor (Operator discovers & scrapes your app)
+# Create a ServiceMonitor (Operator discovers & scrapes your app)
 
 This is the simplest and most convincing demonstration.
 
