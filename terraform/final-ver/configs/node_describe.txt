@@ -1,0 +1,78 @@
+Name:               talos-fmt-js1
+Roles:              control-plane
+Labels:             beta.kubernetes.io/arch=amd64
+                    beta.kubernetes.io/os=linux
+                    kubernetes.io/arch=amd64
+                    kubernetes.io/hostname=talos-fmt-js1
+                    kubernetes.io/os=linux
+                    node-role.kubernetes.io/control-plane=
+                    node.kubernetes.io/exclude-from-external-load-balancers=
+Annotations:        flannel.alpha.coreos.com/backend-data: {"VNI":1,"VtepMAC":"16:13:6d:c5:77:b9"}
+                    flannel.alpha.coreos.com/backend-type: vxlan
+                    flannel.alpha.coreos.com/kube-subnet-manager: true
+                    flannel.alpha.coreos.com/public-ip: 192.168.1.36
+                    node.alpha.kubernetes.io/ttl: 0
+                    talos.dev/owned-labels: ["node-role.kubernetes.io/control-plane","node.kubernetes.io/exclude-from-external-load-balancers"]
+                    volumes.kubernetes.io/controller-managed-attach-detach: true
+CreationTimestamp:  Fri, 09 Jan 2026 21:19:54 +0000
+Taints:             <none>
+Unschedulable:      false
+Lease:
+  HolderIdentity:  talos-fmt-js1
+  AcquireTime:     <unset>
+  RenewTime:       Fri, 09 Jan 2026 23:53:22 +0000
+Conditions:
+  Type                 Status  LastHeartbeatTime                 LastTransitionTime                Reason                       Message
+  ----                 ------  -----------------                 ------------------                ------                       -------
+  NetworkUnavailable   False   Fri, 09 Jan 2026 21:20:21 +0000   Fri, 09 Jan 2026 21:20:21 +0000   FlannelIsUp                  Flannel is running on this node
+  MemoryPressure       False   Fri, 09 Jan 2026 23:53:01 +0000   Fri, 09 Jan 2026 21:19:54 +0000   KubeletHasSufficientMemory   kubelet has sufficient memory available
+  DiskPressure         False   Fri, 09 Jan 2026 23:53:01 +0000   Fri, 09 Jan 2026 21:19:54 +0000   KubeletHasNoDiskPressure     kubelet has no disk pressure
+  PIDPressure          False   Fri, 09 Jan 2026 23:53:01 +0000   Fri, 09 Jan 2026 21:19:54 +0000   KubeletHasSufficientPID      kubelet has sufficient PID available
+  Ready                True    Fri, 09 Jan 2026 23:53:01 +0000   Fri, 09 Jan 2026 21:20:24 +0000   KubeletReady                 kubelet is posting ready status
+Addresses:
+  InternalIP:  192.168.1.36
+  Hostname:    talos-fmt-js1
+Capacity:
+  cpu:                2
+  ephemeral-storage:  18212Mi
+  hugepages-2Mi:      0
+  memory:             3969708Ki
+  pods:               110
+Allocatable:
+  cpu:                1950m
+  ephemeral-storage:  16918564017
+  hugepages-2Mi:      0
+  memory:             3343020Ki
+  pods:               110
+System Info:
+  Machine ID:                 5228583d4da6a248ad19b8f0767d0aa6
+  System UUID:                90a14071-91b3-f442-8fb8-a54da4cf3cff
+  Boot ID:                    f013d354-0dd4-4ca3-8466-0e1770ed55f5
+  Kernel Version:             6.18.2-talos
+  OS Image:                   Talos (v1.12.1)
+  Operating System:           linux
+  Architecture:               amd64
+  Container Runtime Version:  containerd://2.1.6
+  Kubelet Version:            v1.35.0
+  Kube-Proxy Version:
+PodCIDR:                      10.244.0.0/24
+PodCIDRs:                     10.244.0.0/24
+Non-terminated Pods:          (7 in total)
+  Namespace                   Name                                     CPU Requests  CPU Limits  Memory Requests  Memory Limits  Age
+  ---------                   ----                                     ------------  ----------  ---------------  -------------  ---
+  kube-system                 coredns-7859998f6-2tmqn                  100m (5%)     0 (0%)      70Mi (2%)        170Mi (5%)     153m
+  kube-system                 coredns-7859998f6-56x5x                  100m (5%)     0 (0%)      70Mi (2%)        170Mi (5%)     153m
+  kube-system                 kube-apiserver-talos-fmt-js1             200m (10%)    0 (0%)      512Mi (15%)      0 (0%)         153m
+  kube-system                 kube-controller-manager-talos-fmt-js1    50m (2%)      0 (0%)      256Mi (7%)       0 (0%)         153m
+  kube-system                 kube-flannel-jwhs5                       100m (5%)     0 (0%)      50Mi (1%)        0 (0%)         153m
+  kube-system                 kube-proxy-crjvv                         0 (0%)        0 (0%)      0 (0%)           0 (0%)         153m
+  kube-system                 kube-scheduler-talos-fmt-js1             10m (0%)      0 (0%)      64Mi (1%)        0 (0%)         153m
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  Resource           Requests      Limits
+  --------           --------      ------
+  cpu                560m (28%)    0 (0%)
+  memory             1022Mi (31%)  340Mi (10%)
+  ephemeral-storage  0 (0%)        0 (0%)
+  hugepages-2Mi      0 (0%)        0 (0%)
+Events:              <none>
