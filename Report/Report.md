@@ -137,7 +137,7 @@ https://github.com/Cloud-Operations-UCLL/individual-assignment-Rostislav-Dusnii/
 - Created service for it
 https://github.com/Cloud-Operations-UCLL/individual-assignment-Rostislav-Dusnii/blob/main/Keda/prometheus_service.yaml
 
-In the beginning it was not clear for jobs are mainly for so I created them as Alerting systems
+In the beginning it was not clear what jobs are mainly for so I created them as Alerting systems
 - The first one is:
 https://github.com/Cloud-Operations-UCLL/individual-assignment-Rostislav-Dusnii/blob/main/Keda/prometheus_scaled_job.yaml
 When there are too much replicas of nginx - it creates alerting jobs 
